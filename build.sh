@@ -12,6 +12,7 @@
 # Personal variables
 export rom_dir=/home/k/aex/aex
 export BOT_API_KEY="1336436573:AAFpaGsPLEc90A9LBObk6kSXDvjrySmQH14"
+export BOT_CHAT_ID2="571213272"
 export j=20
 export ccache_dir=${rom_dir}/junk/ccache
 export max_ccache=25G
@@ -22,6 +23,8 @@ export max_ccache=25G
 sendMessage() {
     MESSAGE=$1
     curl -s "https://api.telegram.org/bot${BOT_API_KEY}/sendmessage" --data "text=$MESSAGE&chat_id=${BOT_CHAT_ID}" 1>/dev/null
+    echo -e
+    curl -s "https://api.telegram.org/bot${BOT_API_KEY}/sendmessage" --data "text=$MESSAGE&chat_id=${BOT_CHAT_ID2}" 1>/dev/null
     echo -e
 }
 
