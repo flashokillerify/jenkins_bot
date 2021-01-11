@@ -20,24 +20,22 @@ sendMessage() {
 
 # Repo Init
 sendMessage "Repo Initializing."
-if [[ $depth -eq true ]]; then
-	repo init --depth=1 -u ${android_manifest_url} -b ${manifest_branch}
-else
-	repo init -u ${android_manifest_url} -b ${manifest_branch}
-fi
+repo init --depth=1 -u ${android_manifest_url} -b ${manifest_branch} -g default,-darwin,-device,-mips
 sendMessage "Repo Initialised Successfully."
 
 # Repo Sync
 sendMessage "Repo Synchronizing."
-repo sync -j$(nproc --all) --force-sync --no-tags --no-clone-bundle
+repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j 300
 sendMessage "Repo Synchronized Successfully."
 
 # ccache
-export PATH="$(pwd)/ccache/:$PATH"
+ccache_dir=$(pwd)/junk/ccache
+max_ccache=25G
+export CCACHE_DIR=$ccache_dir
+ccache -M $max_ccache
 export USE_CCACHE=1
-export CCACHE_EXEC=$(pwd)/ccache
-ccache -M 25G
-export _JAVA_OPTIONS=-Xmx14g
+export CCACHE_EXEC=$(which ccache)
+export _JAVA_OPTIONS=-Xmx50g
 
 # Build Environment
 . $(pwd)/build/envsetup.sh

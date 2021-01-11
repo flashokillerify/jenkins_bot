@@ -1,29 +1,17 @@
 #!/usr/bin/env bash
 
-#                   GNU GENERAL PUBLIC LICENSE
-#                       Version 3, 29 June 2007
-#
-# Copyright (C) 2007 Free Software Foundation, Inc. <https://fsf.org/>
-# Everyone is permitted to copy and distribute verbatim copies
-# of this license document, but changing it is not allowed.
-#
-# Script by @mrjarvis698
-
-#Predefined Exports
-
 #Repo Init
-export depth="[true/false]"
-export android_manifest_url="[Manifest Url]"
-export manifest_branch="[Manifest Branch]"
+export android_manifest_url="git://github.com/AospExtended/manifest.git"
+export manifest_branch="11.x"
 
 # Lunch device
-export device_prefix="[device prefix like du/rr/revengeos]"
-export device_name="[devicename]"
-export build_variant="[eng/userdebug/user]"
+export device_prefix="aosp"
+export device_name="mido"
+export build_variant="user"
 
 # Make Rom
-export make_rom="[mka bacon/make/Rom Make Choice]"
+export make_rom="make aex"
 
 # Telegram Bot
-export BOT_API_KEY="[Telegram Bot API Token]"
-export BOT_CHAT_ID="[Chat ID of User or Group]"
+export BOT_API_KEY="1336436573:AAFpaGsPLEc90A9LBObk6kSXDvjrySmQH14"
+export BOT_CHAT_ID="571213272"
