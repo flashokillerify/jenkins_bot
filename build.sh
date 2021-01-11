@@ -81,4 +81,15 @@ while test ! -z "$(pidof soong_ui)"; do
         sendMessage "Current percentage: $PERCENTAGE"
 done
 
+
+up4 () 
+{ 
+	    curl --upload-file $1 https://transfer.sh/$(basename $1);
+	        echo
+	}
+
+trim=${tail }
+
+
+
 sendMessage "${make_rom} Finished. Check for your Build."
