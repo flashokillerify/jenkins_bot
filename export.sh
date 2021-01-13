@@ -7,10 +7,10 @@ local_manifest_url="https://github.com/Apon77/android_.repo_local_manifests"
 local_manifest_branch="aex"
 
 # Lunch device
-lunch="brunch aosp_mido-user"
+lunch=$(brunch aosp_mido-user)
 
 # Build command
-build_command="make aex"
+build_command=$(make aex)
 
 # Telegram Bot
 your_telegram_id="571213272"
