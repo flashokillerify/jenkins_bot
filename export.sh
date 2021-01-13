@@ -10,7 +10,7 @@ local_manifest_branch="aex"
 lunch="brunch aosp_mido-user"
 
 # Build command
-make_rom="make aex"
+build_command="make aex"
 
 # Telegram Bot
 your_telegram_id="571213272"
