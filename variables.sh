@@ -1,16 +1,16 @@
-# Repo URLs
-rom_manifest_url="git://github.com/AospExtended/manifest.git"
-rom_manifest_branch="11.x"
+# Repo URL
+rom_manifest_url="https://github.com/ProjectRadiant/manifest"
+rom_manifest_branch="eleven"
 
 # Local manifest (dt,vt,kt,dependencies will sync from here)
-local_manifest_url="https://github.com/Apon77/android_.repo_local_manifests"
-local_manifest_branch="aex"
+local_manifest_url="https://github.com/flashokillerify/manifest_pine"
+local_manifest_branch="radinat"
 
 # Lunch device
-lunch="brunch aosp_mido-user"
+lunch="brunch radiant_pine-userdebug"
 
 # Build command
-build_command="make aex"
+build_command="make bacon"
 
 # Telegram Bot
-your_telegram_id="571213272"
+your_telegram_id="-1001336891256"
