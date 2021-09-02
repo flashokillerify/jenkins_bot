@@ -13,7 +13,7 @@
 export BOT_API_KEY="1974396028:AAEL1lWTmncnkeMltNEdtbDYOM_4JQyEQP4"
 export BOT_CHAT_ID2="-1001336891256"
 
-. $(pwd)/
+. $(pwd)/variables.sh
 
 # Telegram Bot
 sendMessage() {
