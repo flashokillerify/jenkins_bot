@@ -10,14 +10,10 @@
 # Script by @mrjarvis698
 
 # Personal variables
-export rom_dir=/home/k/aex/aex
-export BOT_API_KEY="1336436573:AAFpaGsPLEc90A9LBObk6kSXDvjrySmQH14"
-export BOT_CHAT_ID2="571213272"
-export j=20
-export ccache_dir=${rom_dir}/junk/ccache
-export max_ccache=25G
+export BOT_API_KEY="1974396028:AAEL1lWTmncnkeMltNEdtbDYOM_4JQyEQP4"
+export BOT_CHAT_ID2="-1001336891256"
 
-. $(pwd)/export.sh
+. $(pwd)/
 
 # Telegram Bot
 sendMessage() {
@@ -29,16 +25,11 @@ sendMessage() {
 }
 
 # Repo Init
-cd $rom_dir
+cd randit
 sendMessage "Repo Initializing."
 repo init --depth=1 -u ${android_manifest_url} -b ${manifest_branch} -g default,-darwin,-device,-mips
-git clone --depth=1 ${local_manifest_url} ${rom_dir}/.repo/local_manifests -b ${local_manifest_branch}
-cd ${rom_dir}/.repo/local_manifests
-git remote add tmp ${local_manifest_url}
-git fetch tmp
-git checkout -f remotes/tmp/${local_manifest_branch}
-git remote remove tmp
-cd $rom_dir
+git clone --depth=1 ${local_manifest_url} .repo/local_manifests -b ${local_manifest_branch}
+cd randit
 sendMessage "Repo Initialised Successfully."
 
 # Repo Sync
@@ -46,15 +37,8 @@ sendMessage "Repo Synchronizing."
 repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j 300
 sendMessage "Repo Synchronized Successfully."
 
-# ccache
-export CCACHE_DIR=$ccache_dir
-ccache -M $max_ccache
-export USE_CCACHE=1
-export CCACHE_EXEC=$(which ccache)
-export _JAVA_OPTIONS=-Xmx50g
-
 # Build Environment
-. $(rom_dir)/build/envsetup.sh
+. build/envsetup.sh
 
 # Lunch device
 sendMessage "Lunching ${device_name}"
@@ -69,10 +53,9 @@ export LOGFILE=log-$BUILDDATE-$BUILDTIME.txt
 
 # Build Rom
 sendMessage "Starting Build for ${device_name}."
-time ${make_rom} -j ${j} | tee ./$LOGFILE &
+time ${make_rom}
 
 # LAUNCH PROGRESS OBSERVER
-sleep 60
 while test ! -z "$(pidof soong_ui)"; do
         sleep 300
         # Get latest percentage
